@@ -1,5 +1,4 @@
-package lsi.wsn.sync;
-
+package Assessment;
 
 import ptolemy.actor.TypedAtomicActor;
 import ptolemy.actor.util.Time;
@@ -132,6 +131,7 @@ public class TDMAnchor extends TypedAtomicActor{
 				
 				// turn on the green LED
 				this.setLED(TDMAnchor.GREEN);
+				System.out.println("Received");
 				
 			}
 			

@@ -271,6 +271,9 @@ public class MySourceNode extends TypedAtomicActor {
                 nodes.add(new Node(i + 11));
             }
 
+            // Makes sure we are listening to the default channel
+            this.changeChannel(this.currentChannel);
+
             this.initialised = true;
             return true;
         }
@@ -320,7 +323,7 @@ public class MySourceNode extends TypedAtomicActor {
         {
             Token token = input.get(0);
             int frame = ((IntToken)token).intValue();
-            
+
 
             // Sets the frame value for the node and does some calculations if applicable
             this.setLastReceivedFrameForNode(nodes.get(currentChannel - 11), frame);
