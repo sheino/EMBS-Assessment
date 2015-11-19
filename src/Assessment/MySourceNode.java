@@ -37,7 +37,7 @@ public class MySourceNode extends TypedAtomicActor {
     public MySourceNode(CompositeEntity container, String name) throws NameDuplicationException, IllegalActionException
     {
         super(container, name);
-
+        
         input = new TypedIOPort(this, "input", true, false);
         numberOfSyncNodes = new TypedIOPort(this, "numberOfSyncNodes", true, false);
         output = new TypedIOPort(this, "output", false, true);
@@ -147,11 +147,9 @@ public class MySourceNode extends TypedAtomicActor {
                 }
             } else
             {
-
                 // If t is known  calculate next receive period for node
                 node.ReceiveStateTime = this.currentTime + frame * node.t;
                 this.setFireTime(node.ReceiveStateTime);
-
                 this.changeChannel(this.decideWitchChannelToSwitchTo());
             }
         }
@@ -305,7 +303,6 @@ public class MySourceNode extends TypedAtomicActor {
             return;
         }
 
-
         // Checks weather any nodes are at receive state and send the frame
         // If true we return from the fire method in order not to accidentally overwrite any tokens
         if(this.checkNodesForReceiveState()){return;}
@@ -323,7 +320,6 @@ public class MySourceNode extends TypedAtomicActor {
         {
             Token token = input.get(0);
             int frame = ((IntToken)token).intValue();
-
 
             // Sets the frame value for the node and does some calculations if applicable
             this.setLastReceivedFrameForNode(nodes.get(currentChannel - 11), frame);
